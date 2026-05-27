@@ -38,6 +38,10 @@ const INITIAL_MESSAGE: Message = {
   text: "Hello! I'm your Smile 4U dental assistant. How can I help you today? You can ask me about appointments, timings, treatments, or our location.",
 };
 
+const CRIMSON = "hsl(356 68% 47%)";
+const CRIMSON_DARK = "hsl(356 68% 38%)";
+const CRIMSON_DEEPER = "hsl(356 68% 30%)";
+
 export function ChatBot() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([INITIAL_MESSAGE]);
@@ -59,26 +63,35 @@ export function ChatBot() {
     setInput("");
     setTyping(true);
 
-    const response =
-      BOT_RESPONSES[text.trim()] ||
-      "Thank you for your message! For specific queries, please call us at +91 82992 19918 or WhatsApp us directly. We'd love to help you!";
-
     setTimeout(() => {
-      setTyping(false);
-      setMessages((prev) => [
-        ...prev,
-        { id: Date.now() + 1, from: "bot", text: response },
-      ]);
-    }, 900);
+      const key = Object.keys(BOT_RESPONSES).find((k) =>
+        text.toLowerCase().includes(k.toLowerCase())
+      );
+      const response =
+        BOT_RESPONSES[text] ||
+        (key ? BOT_RESPONSES[key] : null) ||
+        "Great question! For detailed information, please call us at +91 82992 19918 or WhatsApp us — our team is happy to help you.";
+
+      setTimeout(() => {
+        setTyping(false);
+        setMessages((prev) => [
+          ...prev,
+          { id: Date.now() + 1, from: "bot", text: response },
+        ]);
+      }, 900);
+    }, 100);
   };
 
   return (
     <>
-      {/* Chat Bubble Button */}
+      {/* Floating Chat Button — crimson red */}
       <motion.button
         onClick={() => setOpen((v) => !v)}
         className="fixed bottom-24 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-2xl"
-        style={{ background: "linear-gradient(135deg, hsl(200 85% 45%), hsl(195 80% 38%))" }}
+        style={{
+          background: `linear-gradient(135deg, ${CRIMSON}, ${CRIMSON_DARK})`,
+          boxShadow: `0 8px 24px ${CRIMSON}55`,
+        }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         data-testid="chatbot-toggle"
@@ -86,11 +99,23 @@ export function ChatBot() {
       >
         <AnimatePresence mode="wait">
           {open ? (
-            <motion.span key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.2 }}>
+            <motion.span
+              key="close"
+              initial={{ rotate: -90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: 90, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
               <ChevronDown className="w-6 h-6 text-white" />
             </motion.span>
           ) : (
-            <motion.span key="open" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.2 }}>
+            <motion.span
+              key="open"
+              initial={{ rotate: 90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: -90, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
               <Bot className="w-6 h-6 text-white" />
             </motion.span>
           )}
@@ -105,11 +130,16 @@ export function ChatBot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="fixed bottom-40 right-6 z-50 w-80 sm:w-96 rounded-3xl overflow-hidden shadow-2xl"
+            className="fixed bottom-40 right-6 z-50 w-80 sm:w-96 rounded-3xl overflow-hidden shadow-2xl border border-border/20"
             style={{ backdropFilter: "blur(20px)" }}
           >
-            {/* Header — brand blue */}
-            <div className="px-5 py-4 flex items-center justify-between" style={{ background: "linear-gradient(90deg, hsl(200 85% 45%), hsl(200 85% 38%))" }}>
+            {/* Header — premium crimson */}
+            <div
+              className="px-5 py-4 flex items-center justify-between"
+              style={{
+                background: `linear-gradient(135deg, ${CRIMSON}, ${CRIMSON_DEEPER})`,
+              }}
+            >
               <div className="flex items-center gap-3">
                 <div className="w-9 h-9 bg-white/20 rounded-full flex items-center justify-center">
                   <Bot className="w-5 h-5 text-white" />
@@ -117,12 +147,16 @@ export function ChatBot() {
                 <div>
                   <p className="text-white font-semibold text-sm">Dental Assistant</p>
                   <p className="text-white/70 text-xs flex items-center gap-1">
-                    <span className="w-2 h-2 bg-green-400 rounded-full inline-block"></span>
+                    <span className="w-2 h-2 bg-green-400 rounded-full inline-block" />
                     Online now
                   </p>
                 </div>
               </div>
-              <button onClick={() => setOpen(false)} className="text-white/70 hover:text-white transition-colors" data-testid="chatbot-close">
+              <button
+                onClick={() => setOpen(false)}
+                className="text-white/70 hover:text-white transition-colors"
+                data-testid="chatbot-close"
+              >
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -139,9 +173,14 @@ export function ChatBot() {
                   <div
                     className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${
                       msg.from === "user"
-                        ? "bg-primary text-white rounded-br-sm"
+                        ? "text-white rounded-br-sm"
                         : "bg-muted text-foreground rounded-bl-sm"
                     }`}
+                    style={
+                      msg.from === "user"
+                        ? { background: `linear-gradient(135deg, ${CRIMSON}, ${CRIMSON_DARK})` }
+                        : undefined
+                    }
                   >
                     {msg.text}
                   </div>
@@ -149,7 +188,11 @@ export function ChatBot() {
               ))}
 
               {typing && (
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex justify-start">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="flex justify-start"
+                >
                   <div className="bg-muted px-4 py-3 rounded-2xl rounded-bl-sm flex gap-1 items-center">
                     {[0, 1, 2].map((i) => (
                       <motion.span
@@ -165,16 +208,28 @@ export function ChatBot() {
               <div ref={bottomRef} />
             </div>
 
-            {/* Quick Replies */}
-            <div className="bg-white/90 px-4 py-3 border-t border-border/50 flex gap-2 overflow-x-auto scrollbar-hide">
+            {/* FAQ Quick Replies — crimson red */}
+            <div className="px-4 py-2 bg-white/80 border-t border-border/30 flex gap-2 overflow-x-auto scrollbar-none">
               {FAQ_REPLIES.map((faq) => (
                 <button
                   key={faq}
                   onClick={() => sendMessage(faq)}
-                  className="text-xs border rounded-full px-3 py-1 whitespace-nowrap transition-colors shrink-0 hover:text-white"
-                style={{ color: "hsl(200 85% 45%)", borderColor: "hsl(200 85% 45% / 0.35)" }}
-                onMouseEnter={e => (e.currentTarget.style.background = "hsl(200 85% 45%)")}
-                onMouseLeave={e => (e.currentTarget.style.background = "")}
+                  className="text-xs rounded-full px-3 py-1.5 whitespace-nowrap font-medium transition-all border shrink-0"
+                  style={{
+                    color: CRIMSON,
+                    borderColor: `${CRIMSON}40`,
+                    background: `${CRIMSON}08`,
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLButtonElement).style.background = CRIMSON;
+                    (e.currentTarget as HTMLButtonElement).style.color = "#fff";
+                    (e.currentTarget as HTMLButtonElement).style.borderColor = CRIMSON;
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLButtonElement).style.background = `${CRIMSON}08`;
+                    (e.currentTarget as HTMLButtonElement).style.color = CRIMSON;
+                    (e.currentTarget as HTMLButtonElement).style.borderColor = `${CRIMSON}40`;
+                  }}
                   data-testid={`chatbot-faq-${faq.toLowerCase().replace(/\s+/g, "-")}`}
                 >
                   {faq}
@@ -183,25 +238,31 @@ export function ChatBot() {
             </div>
 
             {/* Input */}
-            <div className="bg-white px-4 py-3 flex items-center gap-3 border-t border-border/50">
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                sendMessage(input);
+              }}
+              className="flex gap-2 px-4 py-3 bg-white border-t border-border/40"
+            >
               <input
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && sendMessage(input)}
-                placeholder="Type your question..."
-                className="flex-1 text-sm bg-muted rounded-full px-4 py-2 outline-none focus:ring-2 focus:ring-primary/30 border-none"
+                placeholder="Ask anything about dental care..."
+                className="flex-1 text-sm bg-muted/60 rounded-full px-4 py-2 outline-none border border-transparent focus:border-primary/30 transition-colors"
                 data-testid="chatbot-input"
               />
               <button
-                onClick={() => sendMessage(input)}
+                type="submit"
                 disabled={!input.trim()}
-                className="w-9 h-9 rounded-full bg-primary text-white flex items-center justify-center disabled:opacity-40 hover:bg-primary/90 transition-colors"
+                className="w-9 h-9 rounded-full flex items-center justify-center text-white transition-all disabled:opacity-40 shrink-0"
+                style={{ background: `linear-gradient(135deg, ${CRIMSON}, ${CRIMSON_DARK})` }}
                 data-testid="chatbot-send"
               >
                 <Send className="w-4 h-4" />
               </button>
-            </div>
+            </form>
           </motion.div>
         )}
       </AnimatePresence>

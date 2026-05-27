@@ -40,7 +40,7 @@
   --color-destructive-foreground: hsl(var(--destructive-foreground));
   --color-destructive-border: var(--destructive-border);
 
-  /* Brand blue — used only in Navbar */
+  /* Brand — reserved for logo only (very subtle use) */
   --color-brand: hsl(var(--brand));
   --color-brand-foreground: hsl(var(--brand-foreground));
 
