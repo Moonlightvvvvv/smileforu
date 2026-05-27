@@ -8,6 +8,8 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { MobileBottomBar } from "@/components/MobileBottomBar";
+import { CustomCursor } from "@/components/CustomCursor";
+import { ChatBot } from "@/components/ChatBot";
 
 import Home from "@/pages/home";
 import About from "@/pages/about";
@@ -24,7 +26,7 @@ function Router() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="flex-grow pt-20"> {/* PT to account for fixed navbar */}
+      <main className="flex-grow">
         <Switch>
           <Route path="/" component={Home} />
           <Route path="/about" component={About} />
@@ -39,7 +41,9 @@ function Router() {
       </main>
       <Footer />
       <WhatsAppButton />
+      <ChatBot />
       <MobileBottomBar />
+      <CustomCursor />
     </div>
   );
 }
