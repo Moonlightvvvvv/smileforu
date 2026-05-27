@@ -5,7 +5,7 @@ import heroImg from "@/assets/hero.png";
 import { Star, ShieldCheck, Award } from "lucide-react";
 
 export function HeroSection() {
-  const brandBlue = "hsl(200 85% 45%)";
+  const crimsonRed = "hsl(356 68% 47%)";
 
   return (
     <section className="relative min-h-[92vh] flex items-center overflow-hidden">
@@ -43,7 +43,7 @@ export function HeroSection() {
             <h1 className="text-5xl md:text-7xl font-serif font-bold text-foreground leading-[1.08] mb-6">
               Your Perfect Smile{" "}
               <br />
-              <span style={{ color: brandBlue }}>Awaits You.</span>
+              <span style={{ color: crimsonRed }}>Awaits You.</span>
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground mb-10 leading-relaxed max-w-xl">

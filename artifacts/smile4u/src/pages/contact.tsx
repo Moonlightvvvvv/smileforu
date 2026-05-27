@@ -133,6 +133,7 @@ export default function Contact() {
           {/* Appointment Form + Payment */}
           <div className="space-y-8">
             <motion.div
+              id="appointment-form"
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
