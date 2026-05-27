@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { AppointmentForm } from "@/components/AppointmentForm";
+import { PaymentSection } from "@/components/PaymentSection";
 import { MapPin, Phone, Mail, Clock, AlertTriangle } from "lucide-react";
 
 export default function Contact() {
@@ -129,20 +130,24 @@ export default function Contact() {
             </motion.div>
           </div>
 
-          {/* Appointment Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="bg-white p-8 md:p-10 rounded-3xl border border-border/60 shadow-xl shadow-accent/5"
-          >
-            <h2 className="text-3xl font-serif font-bold mb-2">Book an Appointment</h2>
-            <p className="text-muted-foreground mb-8">
-              Fill out the form below and our team will confirm your slot within a few hours.
-            </p>
-            <AppointmentForm />
-          </motion.div>
+          {/* Appointment Form + Payment */}
+          <div className="space-y-8">
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="bg-white p-8 md:p-10 rounded-3xl border border-border/60 shadow-xl shadow-accent/5"
+            >
+              <h2 className="text-3xl font-serif font-bold mb-2">Book an Appointment</h2>
+              <p className="text-muted-foreground mb-8">
+                Fill out the form below — you'll be redirected to WhatsApp to confirm instantly.
+              </p>
+              <AppointmentForm />
+            </motion.div>
+
+            <PaymentSection />
+          </div>
         </div>
       </div>
 

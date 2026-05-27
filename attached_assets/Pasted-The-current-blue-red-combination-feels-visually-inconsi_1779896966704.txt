@@ -1,0 +1,99 @@
+The current blue + red combination feels visually inconsistent now.
+
+Please professionally rebalance the entire website color system.
+
+IMPORTANT BRANDING RULE:
+
+* ONLY keep the navbar/header blue.
+* The entire rest of the website should follow a luxurious elegant red theme inspired by the original website branding.
+
+This includes:
+
+* buttons
+* hover effects
+* icons
+* accents
+* highlights
+* borders
+* cards
+* gradients
+* glow effects
+* CTA sections
+* section backgrounds
+
+IMPORTANT:
+Do NOT use random blue backgrounds in content sections anymore.
+The mixed blue/red styling currently feels disconnected.
+
+The website should feel:
+
+* visually unified
+* luxurious
+* elegant
+* premium
+* modern healthcare quality
+
+CURSOR FIX:
+The current red custom cursor blends into red UI elements and becomes difficult to see.
+
+Please:
+
+* change the custom cursor color from red to elegant premium blue
+* ensure it is always visible
+* avoid camouflage issues
+* keep smooth premium cursor animations
+* ensure there is NEVER a double cursor issue
+
+GOOGLE SHEETS + WHATSAPP BOOKING FLOW:
+
+Implement a REAL working booking system:
+
+When a user submits the appointment form:
+
+1. Save appointment details into Google Sheets
+
+2. Include:
+
+   * Full Name
+   * Phone Number
+   * Email
+   * Treatment Type
+   * Preferred Date
+   * Message
+   * Timestamp
+
+3. After successful submission:
+
+   * automatically redirect user to WhatsApp
+
+4. Open WhatsApp with a professional pre-filled appointment request message like:
+
+“Hello Doctor,
+I would like to book a dental appointment at Smile 4U Family Dental Clinic.
+
+Name:
+Phone:
+Treatment:
+Preferred Date:
+
+Please confirm my appointment availability.
+Thank you.”
+
+IMPORTANT:
+
+* Google Sheets saving must happen BEFORE WhatsApp redirect
+* Keep smooth UX
+* Add loading state
+* Add success animation
+* Ensure mobile responsiveness
+* Prevent duplicate submissions/spam
+
+FINAL UI POLISH:
+Please do a final premium UI consistency pass across the whole website:
+
+* improve color harmony
+* maintain luxury healthcare aesthetic
+* keep modern animations
+* improve section consistency
+* keep everything elegant and balanced
+* avoid disconnected color combinations

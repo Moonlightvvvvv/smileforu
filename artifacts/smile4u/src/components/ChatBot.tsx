@@ -108,8 +108,8 @@ export function ChatBot() {
             className="fixed bottom-40 right-6 z-50 w-80 sm:w-96 rounded-3xl overflow-hidden shadow-2xl"
             style={{ backdropFilter: "blur(20px)" }}
           >
-            {/* Header */}
-            <div className="bg-gradient-to-r from-primary to-blue-600 px-5 py-4 flex items-center justify-between">
+            {/* Header — brand blue */}
+            <div className="px-5 py-4 flex items-center justify-between" style={{ background: "linear-gradient(90deg, hsl(200 85% 45%), hsl(200 85% 38%))" }}>
               <div className="flex items-center gap-3">
                 <div className="w-9 h-9 bg-white/20 rounded-full flex items-center justify-center">
                   <Bot className="w-5 h-5 text-white" />
@@ -171,7 +171,10 @@ export function ChatBot() {
                 <button
                   key={faq}
                   onClick={() => sendMessage(faq)}
-                  className="text-xs text-primary border border-primary/30 rounded-full px-3 py-1 whitespace-nowrap hover:bg-primary hover:text-white transition-colors shrink-0"
+                  className="text-xs border rounded-full px-3 py-1 whitespace-nowrap transition-colors shrink-0 hover:text-white"
+                style={{ color: "hsl(200 85% 45%)", borderColor: "hsl(200 85% 45% / 0.35)" }}
+                onMouseEnter={e => (e.currentTarget.style.background = "hsl(200 85% 45%)")}
+                onMouseLeave={e => (e.currentTarget.style.background = "")}
                   data-testid={`chatbot-faq-${faq.toLowerCase().replace(/\s+/g, "-")}`}
                 >
                   {faq}
