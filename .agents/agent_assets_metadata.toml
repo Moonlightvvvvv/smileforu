@@ -1,0 +1,74 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "97S4G77zWUdyVF9STZIO3"
+uri = "file://artifacts/smile4u/src/assets/hero.png"
+type = "image"
+title = "hero image"
+
+[[generated]]
+id = "jPOgq_eMxBLn0D5u7rK8J"
+uri = "file://artifacts/smile4u/src/assets/doctor1.png"
+type = "image"
+title = "doctor avatar"
+
+[[generated]]
+id = "tDNmVb_TYi4BhZGPUdF-P"
+uri = "file://artifacts/smile4u/src/assets/gallery1.png"
+type = "image"
+title = "clinic interior"
+
+[[generated]]
+id = "eKhhoMdurT0jB6fCjcxDI"
+uri = "file://artifacts/smile4u/src/assets/gallery2.png"
+type = "image"
+title = "clinic interior 2"
+
+[[generated]]
+id = "gBdEdVAwTb7OtHHfTt4hR"
+uri = "file://artifacts/smile4u/src/assets/gallery3.png"
+type = "image"
+title = "treatment room"
+
+[[generated]]
+id = "cvj4nyla5NoYdkubRL5KL"
+uri = "file://artifacts/smile4u/src/assets/gallery4.png"
+type = "image"
+title = "happy patient"
+
+[[generated]]
+id = "RP9GOFgdIgayW4M5g6xzd"
+uri = "file://artifacts/smile4u/src/assets/gallery5.png"
+type = "image"
+title = "dental tools"
+
+[[generated]]
+id = "odSF3CeCX8vaRRe4KhB1x"
+uri = "file://artifacts/smile4u/src/assets/gallery6.png"
+type = "image"
+title = "clinic exterior"
+
+[[generated]]
+id = "4Sy1NhFRNaq_alYVlcBe-"
+uri = "file://artifacts/smile4u/src/assets/gallery7.png"
+type = "image"
+title = "smiling child"
+
+[[generated]]
+id = "h-MRfIr0O8ZmDXcTS86NR"
+uri = "file://artifacts/smile4u/src/assets/gallery8.png"
+type = "image"
+title = "consultation"
+
+[[generated]]
+id = "OJL3zL2HbaXzbuNhddJfG"
+uri = "file://attached_assets/generated_images/professional_male_dentist_doctor_3f93.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "PEFDGprLknXIwilFoMwAX"
+uri = "file://attached_assets/generated_images/professional_female_dentist_doctor_5f60.png"
+type = "image"
+title = "generated_image"

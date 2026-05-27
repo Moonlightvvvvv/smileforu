@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Smile 4U Family Dental Clinic"
+version = "1.0.0"
+id = "artifacts/smile4u"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22191
+
+[services.development]
+run = "pnpm --filter @workspace/smile4u run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/smile4u", "run", "build" ]
+publicDir = "artifacts/smile4u/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22191"
+BASE_PATH = "/"
