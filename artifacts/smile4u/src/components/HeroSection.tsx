@@ -78,8 +78,8 @@ export function HeroSection() {
               <a href="tel:+918299219918" data-testid="hero-call">
                 <Button
                   size="lg"
-                  variant="ghost"
-                  className="rounded-full text-base px-8 py-6 hover:bg-white/60"
+                  variant="outline"
+                  className="rounded-full text-base px-8 py-6 bg-white/70 backdrop-blur-sm border-2 border-primary/30 text-primary hover:bg-white hover:border-primary font-semibold transition-all"
                 >
                   Call Clinic
                 </Button>
